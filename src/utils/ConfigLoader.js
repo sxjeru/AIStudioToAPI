@@ -27,7 +27,7 @@ class ConfigLoader {
             enableAuthUpdate: true,
             enableUsageStats: true,
             failureThreshold: 3,
-            fakeStreamTimeoutMs: 300000,
+            fakeStreamTimeoutMs: 3000000,
             forceThinking: false,
             forceUrlContext: false,
             forceWebSearch: false,
@@ -70,13 +70,13 @@ class ConfigLoader {
         if (process.env.STREAM_TIMEOUT_MS) {
             const parsed = parseInt(process.env.STREAM_TIMEOUT_MS, 10);
             config.streamTimeoutMs = Number.isFinite(parsed)
-                ? Math.min(300000, Math.max(1, parsed))
+                ? Math.min(3000000, Math.max(1, parsed))
                 : config.streamTimeoutMs;
         }
         if (process.env.FAKE_STREAM_TIMEOUT_MS) {
             const parsed = parseInt(process.env.FAKE_STREAM_TIMEOUT_MS, 10);
             config.fakeStreamTimeoutMs = Number.isFinite(parsed)
-                ? Math.min(300000, Math.max(1, parsed))
+                ? Math.min(3000000, Math.max(1, parsed))
                 : config.fakeStreamTimeoutMs;
         }
         if (process.env.WS_PORT) {

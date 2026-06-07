@@ -231,7 +231,7 @@ class RequestProcessor {
         }
 
         // Browser-side safety cap. Server-side timeouts can be configured with env vars.
-        const IDLE_TIMEOUT_DURATION = 300000; // 300 seconds (5 minutes)
+        const IDLE_TIMEOUT_DURATION = 3000000; // 3000 seconds (50 minutes)
         const abortController = new AbortController();
         const activeOperation = { abortController, requestAttemptId };
         this.activeOperations.set(operationId, activeOperation);
@@ -692,7 +692,7 @@ class ProxySystem extends EventTarget {
 
             // --- Core modification: Correctly dispatch streaming and non-streaming data inside the loop ---
             // Browser-side safety cap for each chunk read.
-            const CHUNK_READ_TIMEOUT = 300000; // 300 seconds (5 minutes)
+            const CHUNK_READ_TIMEOUT = 3000000; // 3000 seconds (50 minutes)
             let processing = true;
             while (processing) {
                 // Check if WebSocket is still connected
